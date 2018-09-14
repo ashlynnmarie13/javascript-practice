@@ -45,4 +45,43 @@ function fizzbuzz(n) {
 }
 
 fizzbuzz(1, 2, 3, 4, 5, 6, 7, 8, 9, 55, 33);
-//
+
+// Given an array and chunk size, divide that array into many subarrays where eacher
+// subarray is of length size
+// ex: ([1,2,3,4,5],2) makes ([1,2],[3,4],[5])
+
+function chunk(array, size) {
+  //declare new empty array
+  const chunked = [];
+
+  for (let element of array) {
+    //gettng the last element in chunked
+    const last = chunked[chunked.length - 1];
+    // if there is no last or last's length is less that the size,
+    // push the current element into the chunk
+    if (!last || last.length === size) {
+      chunked.push([element]);
+      // else push the entire element(chunk) into the chunked array
+    } else {
+      last.push(element);
+    }
+  }
+  return chunked;
+}
+
+console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8], 3));
+
+function chunky(array, size) {
+  //declare new empty array
+  const chunked = [];
+  let index = 0;
+
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    //incrementing by the size variable
+    index += size;
+  }
+  return chunked;
+}
+
+console.log(chunky([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
