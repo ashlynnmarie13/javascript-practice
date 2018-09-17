@@ -85,3 +85,24 @@ function chunky(array, size) {
 }
 
 console.log(chunky([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+
+//removing all extra characters from a string
+str.replace(/[^\w]/g, "");
+
+//anagrams
+function anagram(strA, strB) {
+  const newStrA = buildCharMap(strA);
+  const newStrB = buildCharMap(strB);
+
+  if (Object.keys(newStrA).length != Object.keys(newStrB).length) {
+    return false;
+  }
+  return true;
+}
+function buildCharMap(str) {
+  const charMap = {};
+  for (let char in str.replace(/[^\w]/, g).toLowerCase) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
+}
