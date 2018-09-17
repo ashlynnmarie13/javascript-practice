@@ -99,6 +99,7 @@ function anagram(strA, strB) {
   }
   return true;
 }
+
 function buildCharMap(str) {
   const charMap = {};
   for (let char in str.replace(/[^\w]/, g).toLowerCase) {
@@ -106,3 +107,61 @@ function buildCharMap(str) {
   }
   return charMap;
 }
+
+//capitalize every word in a string
+
+function capitalize(str) {
+  const words = [];
+
+  for (let word of str.split(" ")) {
+    words.push(word[0].toUppercase + word.slice(1));
+  }
+  return words.join(" ");
+}
+
+//based on a number, print stairs
+//ex: 3 would be
+// "#  "
+// "## "
+// "###"
+
+function stairs(n) {
+  for (let row = 0; row < n; row++) {
+    steps = "";
+    for (let column = 0; column < n; column++) {
+      if (column <= row) {
+        steps += "#";
+      } else {
+        steps += " ";
+      }
+    }
+    console.log(steps);
+  }
+}
+
+// basic recursion
+function printNumber(n) {
+  if (n === 0) {
+    return;
+  }
+  printNumber(n - 1);
+}
+printNumber(10);
+
+// return the number of vowels
+vowels = str => {
+  let count = 0;
+  let vowels = ["a", "e", "i", "o", "u"];
+
+  for (let char of str.toLowerCase()) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+};
+
+vowelsTwo = str => {
+  const matches = str.match(/[a,e,i,o,u]/, gi);
+  return matches ? matches.length : 0;
+};
